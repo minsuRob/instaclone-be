@@ -1,14 +1,21 @@
 const {ApolloServer, gql} = require('apollo-server');
 
 const typeDefs = gql`
-    type Query {
-        hello: String
+    type Movie {
+        title: String
+        year: Int
     }    
+
+    type Query {
+        movies: [Movie]
+        movie : Movie
+    }
 `;
 
 const resolvers = {
     Query: {
-        hello : () => "GoodGood",
+        movies: () => [],
+        movie: () => ({ title: "hello title", year: 2021}),
     },
 };
 
