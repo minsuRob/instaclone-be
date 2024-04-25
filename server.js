@@ -1,9 +1,16 @@
+const { PrismaClient } = require('@prisma/client');
 const {ApolloServer, gql} = require('apollo-server');
+
+const client = new PrismaClient();
 
 const typeDefs = gql`
     type Movie {
-        title: String
-        year: Int
+        id: Int!
+        title: String!
+        year: Int!
+        genre: String
+        createAt: String!
+        updateAt: String!
     }    
 
     type Query {
@@ -14,7 +21,7 @@ const typeDefs = gql`
 
 const resolvers = {
     Query: {
-        movies: () => [],
+        movies: () => client.movie.findMany(),
         movie: () => ({ title: "hello title", year: 2021}),
     },
 };
