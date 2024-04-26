@@ -17,13 +17,32 @@ const typeDefs = gql`
         movies: [Movie]
         movie : Movie
     }
+
+    type Mutation {
+        createMovie(title: String!, year: Int!, genre: String): Movie
+    }
 `;
 
 const resolvers = {
     Query: {
-        movies: () => client.movie.findMany(),
+        movies: () => {
+            client.movie.findMany();
+        },
         movie: () => ({ title: "hello title", year: 2021}),
     },
+    Mutation: {
+        createMovie: (_, { title, year, genre }) => {
+            console.log(client.movie.create({
+                data: {
+                    title,
+                    year,
+                    genre,
+                },
+            }),)
+            
+        }
+
+    }
 };
 
 const server = new ApolloServer({
