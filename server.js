@@ -1,6 +1,9 @@
-const { PrismaClient } = require('@prisma/client');
-const {ApolloServer, gql} = require('apollo-server');
+require('dotenv').config();
 
+const { PrismaClient } = require('@prisma/client');
+const {ApolloServer} = require('apollo-server');
+
+import schema from './schema';
 const client = new PrismaClient();
 
 const typeDefs = gql`
@@ -46,8 +49,7 @@ const resolvers = {
 };
 
 const server = new ApolloServer({
-    typeDefs,
-    resolvers
+    schema
 })
 
 server.listen().then(() => console.log("Server is running"));
