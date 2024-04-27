@@ -10,7 +10,7 @@ export default {
             if (newPassword) {
                 uglyPwd = await bcrypt.hash(newPassword, 10);
             }
-            return client.user.update({
+            const updateUser = client.user.update({
                 where: {
                     id: 2,
                 },
@@ -22,6 +22,17 @@ export default {
                     ...(uglyPwd && { password: uglyPwd }),
                 },
             });
+
+            if (updateUser.id) {
+                return {
+                    ok: true,
+                };
+            } else {
+                return {
+                    ok: false,
+                    error: 'could not update profile',
+                };
+            }
         },
     },
 };
