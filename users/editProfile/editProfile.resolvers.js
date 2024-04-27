@@ -1,6 +1,5 @@
 export default {
-    Mutation: {
-      editProfile: () => console.log("hi"),
-    },
-  };
-  
+  Mutation: {
+    editProfile: () => console.log("hi"),
+  },
+};
