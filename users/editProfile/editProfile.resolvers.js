@@ -1,5 +1,6 @@
 export default {
-  Mutation: {
-    editProfile: () => console.log("hi"),
-  },
+    Mutation: {
+        editProfile: (_, { firstName, lastName, username, email, password }) =>
+            console.log('hi'),
+    },
 };
