@@ -116,3 +116,4 @@ dist
 .pnp.*
 prisma/migrations/20240426135944_init/migration.sql
 prisma/migrations/migration_lock.toml
+*.sql
