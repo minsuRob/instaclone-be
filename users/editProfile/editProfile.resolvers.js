@@ -1,10 +1,15 @@
 import client from '../../client';
+import bcrypt from 'bcrypt';
 export default {
     Mutation: {
-        editProfile: (
+        editProfile: async (
             _,
-            { firstName, lastName, username, email, password },
+            { firstName, lastName, username, email, password: newPassword },
         ) => {
+            let uglyPwd = null;
+            if (newPassword) {
+                uglyPwd = await bcrypt.hash(newPassword, 10);
+            }
             return client.user.update({
                 where: {
                     id: 2,
@@ -14,7 +19,7 @@ export default {
                     lastName,
                     username,
                     email,
-                    password,
+                    ...(uglyPwd && { password: uglyPwd }),
                 },
             });
         },
