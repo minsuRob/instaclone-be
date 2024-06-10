@@ -5,6 +5,9 @@ import schema from './schema';
 const PORT = process.env.PORT;
 const server = new ApolloServer({
     schema,
+    context: {
+        token: 'eek',
+    },
 });
 server
     .listen(PORT)
