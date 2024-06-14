@@ -7,7 +7,14 @@ export default {
         editProfile: protectResolver(
             async (
                 _,
-                { firstName, lastName, username, email, password: newPassword },
+                {
+                    firstName,
+                    lastName,
+                    username,
+                    email,
+                    password: newPassword,
+                    bio,
+                },
                 { loggedInUser, protectResolver },
             ) => {
                 let uglyPwd = null;
