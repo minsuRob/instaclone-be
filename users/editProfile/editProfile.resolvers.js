@@ -23,6 +23,7 @@ export default {
                         lastName,
                         username,
                         email,
+                        bio,
                         ...(uglyPwd && { password: uglyPwd }),
                     },
                 });
