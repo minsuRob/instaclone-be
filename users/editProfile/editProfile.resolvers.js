@@ -17,6 +17,7 @@ export default {
                 },
                 { loggedInUser, protectResolver },
             ) => {
+                let avatarUrl = 'http://localhost:4000/static/hajong.png';
                 let uglyPwd = null;
                 if (newPassword) {
                     uglyPwd = await bcrypt.hash(newPassword, 10);
@@ -32,6 +33,7 @@ export default {
                         email,
                         bio,
                         ...(uglyPwd && { password: uglyPwd }),
+                        ...(avatarUrl && { avatar: avatarUrl }),
                     },
                 });
 
