@@ -12,5 +12,7 @@ export default gql`
         bio: String
         following: [User]
         followers: [User]
+        totalFollowing: Int!
+        totalFollowers: Int!
     }
 `;
