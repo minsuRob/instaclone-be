@@ -5,11 +5,5 @@ export default {
             return 0;
         },
         totalFollowers: () => 999,
-        isMe: ({ id }, _, { loggedInUser }) => {
-            if (!loggedInUser) {
-                return false;
-            }
-            return id === loggedInUser.id;
-        },
     },
 };
