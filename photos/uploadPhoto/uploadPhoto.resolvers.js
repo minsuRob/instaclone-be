@@ -8,7 +8,7 @@ export default {
                 let hashtagObj = [];
                 if (caption) {
                     const hashtags = caption.match(/#[\w]+/g);
-                    hashtagObj = hashtags.map(() => ({
+                    hashtagObj = hashtags.map((hashtag) => ({
                         where: { hashtag },
                         create: { hashtag },
                     }));
@@ -22,9 +22,9 @@ export default {
                                 {
                                     where: { hashtag: '#food' },
                                     create: { hashtag: '#food' },
-                                },
-                            ],
-                        },*/
+                                    },
+                                    ],
+                                    },*/
 
                         user: {
                             connect: {
