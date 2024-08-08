@@ -1,7 +1,13 @@
-import { gql } from 'apollo-server';
+import { protectResolver } from '../users/users.utils';
 
-export default gql`
-    type Mutation {
-        uploadPhoto(file: String!, caption: String): Photo
-    }
-`;
+export default {
+    Mutation: {
+        uploadPhoto: protectResolver(
+            async (_, { file, caption }, { loggedInUser }) => {
+                if (caption) {
+                    //
+                }
+            },
+        ),
+    },
+};
