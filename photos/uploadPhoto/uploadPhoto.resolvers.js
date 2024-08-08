@@ -13,7 +13,7 @@ export default {
                         create: { hashtag },
                     }));
                 }
-                client.photo.create({
+                return client.photo.create({
                     data: {
                         file,
                         caption,
