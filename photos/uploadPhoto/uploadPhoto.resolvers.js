@@ -32,13 +32,11 @@ export default {
                             },
                         },
 
-                        ...(
-                            hashtagObj.length > 0 && {
-                                hashtags: {
-                                    connectOrCreate: hashtagObj,
-                                },
+                        ...(hashtagObj.length > 0 && {
+                            hashtags: {
+                                connectOrCreate: hashtagObj,
                             },
-                        ),
+                        }),
                     },
                 });
             },
