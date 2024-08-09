@@ -2,7 +2,7 @@ import client from '../../client';
 
 export default {
     Query: {
-        seePhotoComments: (_, { id }) => {
+        seePhotoComments: (_, { id }) =>
             client.comment.findMany({
                 where: {
                     photoId: id,
@@ -10,7 +10,6 @@ export default {
                 orderBy: {
                     createdAt: 'asc',
                 },
-            });
-        },
+            }),
     },
 };
