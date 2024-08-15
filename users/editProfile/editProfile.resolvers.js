@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import client from '../../client';
 import bcrypt from 'bcrypt';
 import { protectResolver } from '../users.utils';
+import { uploadPhoto } from '../../shared/shared.utils';
 export default {
     Mutation: {
         editProfile: protectResolver(
@@ -18,6 +19,9 @@ export default {
                 { loggedInUser, protectResolver },
             ) => {
                 let avatarUrl = 'http://localhost:4000/static/hajong.png';
+                if (avatar) {
+                    avatarUrl = await uploadPhoto(avatar, loggedInUser.id);
+                }
                 let uglyPwd = null;
                 if (newPassword) {
                     uglyPwd = await bcrypt.hash(newPassword, 10);
